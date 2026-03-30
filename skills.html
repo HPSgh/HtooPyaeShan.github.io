@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skills | Htoo Pyae Shan</title>
+  <meta name="description" content="Skills of Htoo Pyae Shan — SQL, Python, R, Power BI, Tableau, and more in data analytics and business intelligence." />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0f1c2e; --navy-mid: #162336; --navy-light: #1e3050;
+      --gold: #c8a84b; --gold-light: #e2c46e;
+      --white: #f5f3ef; --muted: #8a9bb0;
+      --border: rgba(200,168,75,0.2); --card-bg: rgba(30,48,80,0.5);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--navy); color: var(--white); line-height: 1.6;
+    }
+
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0; opacity: 0.4;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.25rem 5%;
+      background: rgba(15,28,46,0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.4rem;
+      font-weight: 600; color: var(--gold); letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 0.85rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      transition: color 0.25s; position: relative;
+    }
+
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 1px; background: var(--gold);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+    /* PAGE HEADER */
+    .page-header { padding: 10rem 5% 4rem; border-bottom: 1px solid var(--border); }
+    .page-header-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-tag {
+      font-size: 0.7rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem;
+    }
+
+    .page-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 700; line-height: 1.05;
+      opacity: 0; animation: fadeUp 0.8s forwards 0.2s;
+    }
+
+    .page-subtitle {
+      margin-top: 1rem; font-size: 0.95rem; color: var(--muted); max-width: 520px;
+      opacity: 0; animation: fadeUp 0.8s forwards 0.4s;
+    }
+
+    /* SKILLS CONTENT */
+    .skills-section { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; }
+
+    .skills-block {
+      margin-bottom: 4rem;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .skills-block.visible { opacity: 1; transform: translateY(0); }
+
+    .block-header {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 1.75rem; padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .block-icon {
+      width: 40px; height: 40px;
+      background: rgba(200,168,75,0.1);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: 1.1rem; flex-shrink: 0;
+    }
+
+    .block-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 600;
+    }
+
+    .skill-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-item {
+      background: var(--card-bg); border: 1px solid var(--border);
+      padding: 1.25rem 1.5rem;
+      transition: border-color 0.25s, transform 0.2s;
+    }
+
+    .skill-item:hover { border-color: var(--gold); transform: translateY(-2px); }
+
+    .skill-name {
+      font-size: 0.9rem; font-weight: 500; margin-bottom: 0.6rem;
+    }
+
+    .skill-bar-track {
+      height: 3px; background: rgba(255,255,255,0.08);
+      position: relative; overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      height: 100%; background: var(--gold);
+      width: 0;
+      transition: width 1.2s ease;
+    }
+
+    .skill-item.visible .skill-bar-fill { width: var(--w); }
+
+    .skill-level {
+      font-size: 0.72rem; color: var(--muted);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-top: 0.4rem;
+    }
+
+    /* Language badges */
+    .lang-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .lang-card {
+      border: 1px solid var(--border); background: var(--card-bg);
+      padding: 1.5rem; text-align: center;
+      transition: border-color 0.25s;
+    }
+
+    .lang-card:hover { border-color: var(--gold); }
+
+    .lang-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 600; margin-bottom: 0.4rem;
+    }
+
+    .lang-level {
+      font-size: 0.78rem; color: var(--muted);
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+
+    /* Certification */
+    .cert-card {
+      border: 1px solid var(--border); background: var(--card-bg);
+      padding: 2rem; display: flex; gap: 1.5rem; align-items: flex-start;
+      transition: border-color 0.25s;
+    }
+
+    .cert-card:hover { border-color: var(--gold); }
+
+    .cert-icon {
+      width: 48px; height: 48px; flex-shrink: 0;
+      background: rgba(200,168,75,0.1); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: 1.4rem;
+    }
+
+    .cert-title { font-size: 1rem; font-weight: 600; margin-bottom: 0.35rem; }
+    .cert-issuer { font-size: 0.85rem; color: var(--muted); }
+    .cert-date { font-size: 0.78rem; color: var(--gold); margin-top: 0.3rem; letter-spacing: 0.06em; }
+
+    /* Education */
+    .edu-card {
+      border: 1px solid var(--border); background: var(--card-bg);
+      padding: 2rem; transition: border-color 0.25s;
+    }
+
+    .edu-card:hover { border-color: var(--gold); }
+
+    .edu-degree {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 600; margin-bottom: 0.4rem;
+    }
+
+    .edu-school { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.8rem; }
+    .edu-meta { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .edu-meta-item { font-size: 0.82rem; }
+    .edu-meta-item strong { color: var(--gold); }
+
+    footer {
+      padding: 1.75rem 5%; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between;
+      align-items: center; font-size: 0.8rem; color: var(--muted);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) { .nav-links { display: none; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">HPS</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="skills.html" class="active">Skills</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="page-header">
+    <div class="page-header-inner">
+      <p class="section-tag">Capabilities</p>
+      <h1 class="page-title">Skills & Tools</h1>
+      <p class="page-subtitle">A data-focused skill set spanning analysis, visualization, business intelligence, and software engineering — built for Junior Data Analyst roles.</p>
+    </div>
+  </header>
+
+  <section class="skills-section">
+
+    <!-- Data Analysis -->
+    <div class="skills-block">
+      <div class="block-header">
+        <div class="block-icon">◈</div>
+        <h2 class="block-title">Data Analysis Tools</h2>
+      </div>
+      <div class="skill-items">
+        <div class="skill-item" style="--w:88%">
+          <div class="skill-name">SQL</div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+          <div class="skill-level">Advanced</div>
+        </div>
+        <div class="skill-item" style="--w:80%">
+          <div class="skill-name">Python · Pandas</div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+          <div class="skill-level">Proficient</div>
+        </div>
+        <div class="skill-item" style="--w:78%">
+          <div class="skill-name">Python · NumPy</div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+          <div class="skill-level">Proficient</div>
+        </div>
+        <div class="skill-item" style="--w:85%">
+          <div class="skill-name">R · Tidyverse</div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+          <div class="skill-level">Proficient</div>
+        </div>
+        <div class="skill-item" style="--w:82%">
+          <div class="skill-name">R · ggplot2</div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+          <div class="skill-level">Proficient</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Business Intelligence -->
+    <div class="skills-block">
+      <div class="block-header">
+        <div class="block-icon">▦</div>
+        <h2 class="block-title">Business Intelligence</h2>
+      </div>
+      <div class="skill-items">
+        <div class="skill-item" style="--w:82%">
+          <div class="skill-name">Power BI</div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+          <div class="skill-level">Proficient</div>
+        </div>
+        <div class="skill-item" style="--w:85%">
+          <div class="skill-name">Microsoft Excel</div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+          <div class="skill-level">Advanced</div>
+        </div>
+        <div class="skill-item" style="--w:75%">
+          <div class="skill-name">Tableau</div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+          <div class="skill-level">Intermediate</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Marketing Analytics -->
+    <div class="skills-block">
+      <div class="block-header">
+        <div class="block-icon">◎</div>
+        <h2 class="block-title">Marketing Analytics</h2>
+      </div>
+      <div class="skill-items">
+        <div class="skill-item" style="--w:80%">
+          <div class="skill-name">KPI Tracking</div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+          <div class="skill-level">Proficient</div>
+        </div>
+        <div class="skill-item" style="--w:82%">
+          <div class="skill-name">Data Integrity</div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+          <div class="skill-level">Proficient</div>
+        </div>
+        <div class="skill-item" style="--w:75%">
+          <div class="skill-name">Feature Engineering</div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+          <div class="skill-level">Intermediate</div>
+        </div>
+        <div class="skill-item" style="--w:78%">
+          <div class="skill-name">Campaign Analysis</div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+          <div class="skill-level">Proficient</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Languages -->
+    <div class="skills-block">
+      <div class="block-header">
+        <div class="block-icon">◉</div>
+        <h2 class="block-title">Languages</h2>
+      </div>
+      <div class="lang-grid">
+        <div class="lang-card">
+          <div class="lang-name">Burmese</div>
+          <div class="lang-level">Native</div>
+        </div>
+        <div class="lang-card">
+          <div class="lang-name">English</div>
+          <div class="lang-level">Fluent</div>
+        </div>
+        <div class="lang-card">
+          <div class="lang-name">Thai</div>
+          <div class="lang-level">Elementary</div>
+        </div>
+        <div class="lang-card">
+          <div class="lang-name">French</div>
+          <div class="lang-level">Basic</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certification -->
+    <div class="skills-block">
+      <div class="block-header">
+        <div class="block-icon">✦</div>
+        <h2 class="block-title">Certification</h2>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">G</div>
+        <div>
+          <div class="cert-title">Google Data Analytics Professional Certificate</div>
+          <div class="cert-issuer">Google · Coursera</div>
+          <div class="cert-date">Completed 2025</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="skills-block">
+      <div class="block-header">
+        <div class="block-icon">◐</div>
+        <h2 class="block-title">Education</h2>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Bachelor's Degree in Software Engineering</div>
+        <div class="edu-school">Mae Fah Luang University · 2022 – Present</div>
+        <div class="edu-meta">
+          <div class="edu-meta-item"><strong>GPAX</strong> &nbsp; 3.72 / 4.0</div>
+          <div class="edu-meta-item"><strong>Coursework</strong> &nbsp; Database Systems · Probability & Statistics</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <footer>
+    <span>© 2026 Htoo Pyae Shan</span>
+    <a href="index.html" style="color:var(--gold); text-decoration:none; font-size:0.8rem;">← Back to Home</a>
+  </footer>
+
+  <script>
+    // Reveal blocks
+    const blocks = document.querySelectorAll('.skills-block');
+    const blockObs = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 100);
+        }
+      });
+    }, { threshold: 0.08 });
+    blocks.forEach(b => blockObs.observe(b));
+
+    // Animate skill bars on visibility
+    const items = document.querySelectorAll('.skill-item');
+    const itemObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); }
+      });
+    }, { threshold: 0.2 });
+    items.forEach(i => itemObs.observe(i));
+  </script>
+
+</body>
+</html>

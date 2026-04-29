@@ -4,213 +4,50 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects | Htoo Pyae Shan</title>
-  <meta name="description" content="Data analysis projects by Htoo Pyae Shan — NYC Taxi Fare Prediction, BellaBeat Fitness Data Analysis, and more." />
+  <meta name="description" content="Data projects by Htoo Pyae Shan — Automated SEO Pipeline, Automatidata NYC Taxi Fare, and BellaBeat Fitness Analysis." />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --navy: #0f1c2e;
-      --navy-mid: #162336;
-      --navy-light: #1e3050;
-      --gold: #c8a84b;
-      --gold-light: #e2c46e;
-      --white: #f5f3ef;
-      --muted: #8a9bb0;
-      --border: rgba(200,168,75,0.2);
-      --card-bg: rgba(30, 48, 80, 0.5);
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background-color: var(--navy);
-      color: var(--white);
-      line-height: 1.6;
-    }
-
-    body::before {
-      content: '';
-      position: fixed; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 0; opacity: 0.4;
-    }
-
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.25rem 5%;
-      background: rgba(15,28,46,0.85); backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif; font-size: 1.4rem;
-      font-weight: 600; color: var(--gold); letter-spacing: 0.04em;
-      text-decoration: none;
-    }
-
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-
-    .nav-links a {
-      color: var(--muted); text-decoration: none;
-      font-size: 0.85rem; font-weight: 500;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      transition: color 0.25s; position: relative;
-    }
-
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: -3px; left: 0;
-      width: 0; height: 1px; background: var(--gold);
-      transition: width 0.3s ease;
-    }
-
-    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
-    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
-
-    /* PAGE HEADER */
-    .page-header {
-      padding: 10rem 5% 4rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .page-header-inner { max-width: 1200px; margin: 0 auto; }
-
-    .section-tag {
-      font-size: 0.7rem; letter-spacing: 0.25em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem;
-    }
-
-    .page-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.5rem, 6vw, 5rem);
-      font-weight: 700; line-height: 1.05;
-      opacity: 0; animation: fadeUp 0.8s forwards 0.2s;
-    }
-
-    .page-subtitle {
-      margin-top: 1rem; font-size: 0.95rem; color: var(--muted);
-      max-width: 520px;
-      opacity: 0; animation: fadeUp 0.8s forwards 0.4s;
-    }
-
-    /* PROJECTS GRID */
-    .projects-section {
-      padding: 5rem 5%;
-      max-width: 1200px; margin: 0 auto;
-    }
-
-    .projects-grid {
-      display: grid; gap: 2rem;
-    }
-
-    .project-card {
-      border: 1px solid var(--border);
-      background: var(--card-bg);
-      backdrop-filter: blur(8px);
-      padding: 2.5rem;
-      position: relative;
-      transition: border-color 0.3s, transform 0.3s;
-      opacity: 0; transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease, border-color 0.3s;
-    }
-
-    .project-card.visible { opacity: 1; transform: translateY(0); }
-
-    .project-card:hover { border-color: var(--gold); }
-
-    .project-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 4rem; font-weight: 700;
-      color: rgba(200,168,75,0.1);
-      position: absolute; top: 1.5rem; right: 2rem;
-      line-height: 1; pointer-events: none;
-    }
-
-    .project-tags {
-      display: flex; flex-wrap: wrap; gap: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .tag {
-      font-size: 0.72rem; letter-spacing: 0.1em;
-      text-transform: uppercase; padding: 0.3rem 0.75rem;
-      border: 1px solid rgba(200,168,75,0.35);
-      color: var(--gold); background: rgba(200,168,75,0.06);
-    }
-
-    .project-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.9rem; font-weight: 600;
-      margin-bottom: 1rem; line-height: 1.2;
-    }
-
-    .project-desc {
-      font-size: 0.92rem; color: rgba(245,243,239,0.75);
-      line-height: 1.8; margin-bottom: 2rem;
-    }
-
-    .project-highlights {
-      display: flex; flex-direction: column; gap: 0.6rem;
-      margin-bottom: 2rem;
-    }
-
-    .highlight-item {
-      display: flex; gap: 0.75rem; align-items: flex-start;
-      font-size: 0.88rem; color: rgba(245,243,239,0.7);
-    }
-
-    .highlight-item::before {
-      content: '→'; color: var(--gold);
-      flex-shrink: 0; margin-top: 0.05em;
-    }
-
-    .project-footer {
-      display: flex; justify-content: space-between;
-      align-items: center; padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
-      flex-wrap: wrap; gap: 1rem;
-    }
-
-    .project-date {
-      font-size: 0.8rem; color: var(--muted);
-      letter-spacing: 0.08em;
-    }
-
-    .project-link {
-      font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--gold); text-decoration: none;
-      transition: color 0.25s;
-    }
-
-    .project-link:hover { color: var(--gold-light); }
-
-    /* COMING SOON CARD */
-    .project-card.coming-soon {
-      border-style: dashed;
-      opacity: 0.5;
-    }
-
-    .project-card.coming-soon .project-title { color: var(--muted); }
-
-    footer {
-      padding: 1.75rem 5%; border-top: 1px solid var(--border);
-      display: flex; justify-content: space-between;
-      align-items: center; font-size: 0.8rem; color: var(--muted);
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(22px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 600px) {
-      .nav-links { display: none; }
-    }
+    :root { --navy:#0f1c2e; --navy-mid:#162336; --gold:#c8a84b; --gold-light:#e2c46e; --white:#f5f3ef; --muted:#8a9bb0; --border:rgba(200,168,75,0.2); --card-bg:rgba(30,48,80,0.5); }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'DM Sans',sans-serif; background-color:var(--navy); color:var(--white); line-height:1.6; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:0; opacity:0.4; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:1.25rem 5%; background:rgba(15,28,46,0.85); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
+    .nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:600; color:var(--gold); letter-spacing:0.04em; text-decoration:none; }
+    .nav-links { display:flex; gap:2.5rem; list-style:none; }
+    .nav-links a { color:var(--muted); text-decoration:none; font-size:0.85rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; transition:color 0.25s; position:relative; }
+    .nav-links a::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:1px; background:var(--gold); transition:width 0.3s ease; }
+    .nav-links a:hover, .nav-links a.active { color:var(--gold); }
+    .nav-links a:hover::after, .nav-links a.active::after { width:100%; }
+    .page-header { padding:10rem 5% 4rem; border-bottom:1px solid var(--border); }
+    .page-header-inner { max-width:1200px; margin:0 auto; }
+    .section-tag { font-size:0.7rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:0.8rem; }
+    .page-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2.5rem,6vw,5rem); font-weight:700; line-height:1.05; opacity:0; animation:fadeUp 0.8s forwards 0.2s; }
+    .page-subtitle { margin-top:1rem; font-size:0.95rem; color:var(--muted); max-width:520px; opacity:0; animation:fadeUp 0.8s forwards 0.4s; }
+    .projects-section { padding:5rem 5%; max-width:1200px; margin:0 auto; }
+    .projects-grid { display:grid; gap:2rem; }
+    .project-card { border:1px solid var(--border); background:var(--card-bg); backdrop-filter:blur(8px); padding:2.5rem; position:relative; opacity:0; transform:translateY(24px); transition:opacity 0.7s ease,transform 0.7s ease,border-color 0.3s; }
+    .project-card.visible { opacity:1; transform:translateY(0); }
+    .project-card:hover { border-color:var(--gold); }
+    .project-num { font-family:'Cormorant Garamond',serif; font-size:4rem; font-weight:700; color:rgba(200,168,75,0.1); position:absolute; top:1.5rem; right:2rem; line-height:1; pointer-events:none; }
+    .project-tags { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.5rem; }
+    .tag { font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.3rem 0.75rem; border:1px solid rgba(200,168,75,0.35); color:var(--gold); background:rgba(200,168,75,0.06); }
+    .project-title { font-family:'Cormorant Garamond',serif; font-size:1.9rem; font-weight:600; margin-bottom:1rem; line-height:1.2; }
+    .project-desc { font-size:0.92rem; color:rgba(245,243,239,0.75); line-height:1.8; margin-bottom:2rem; }
+    .project-highlights { display:flex; flex-direction:column; gap:0.6rem; margin-bottom:2rem; }
+    .highlight-item { display:flex; gap:0.75rem; align-items:flex-start; font-size:0.88rem; color:rgba(245,243,239,0.7); }
+    .highlight-item::before { content:'→'; color:var(--gold); flex-shrink:0; margin-top:0.05em; }
+    .project-footer { display:flex; justify-content:space-between; align-items:center; padding-top:1.5rem; border-top:1px solid var(--border); flex-wrap:wrap; gap:1rem; }
+    .project-date { font-size:0.8rem; color:var(--muted); letter-spacing:0.08em; }
+    .project-link { font-size:0.82rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); text-decoration:none; transition:color 0.25s; }
+    .project-link:hover { color:var(--gold-light); }
+    code { color:var(--gold-light); background:rgba(200,168,75,0.1); padding:0 4px; font-size:0.88em; }
+    footer { padding:1.75rem 5%; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; font-size:0.8rem; color:var(--muted); }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+    @media (max-width:600px) { .nav-links { display:none; } }
   </style>
 </head>
 <body>
-
   <nav>
     <a href="index.html" class="nav-logo">HPS</a>
     <ul class="nav-links">
@@ -225,41 +62,72 @@
     <div class="page-header-inner">
       <p class="section-tag">Selected Work</p>
       <h1 class="page-title">Projects</h1>
-      <p class="page-subtitle">Data analysis projects focused on integrity, feature engineering, and turning complex datasets into clear insights.</p>
+      <p class="page-subtitle">End-to-end data projects — from pipeline engineering and predictive modeling to business intelligence and stakeholder reporting.</p>
     </div>
   </header>
 
   <section class="projects-section">
     <div class="projects-grid">
 
-      <!-- Project 1 -->
+      <!-- Project 01: SEO Pipeline -->
       <div class="project-card">
         <div class="project-num">01</div>
         <div class="project-tags">
-          <span class="tag">R</span>
-          <span class="tag">Tidyverse</span>
-          <span class="tag">EDA</span>
-          <span class="tag">Feature Engineering</span>
-          <span class="tag">Predictive Modeling</span>
+          <span class="tag">Python</span>
+          <span class="tag">Pandas</span>
+          <span class="tag">SQLite</span>
+          <span class="tag">Google Search Console API</span>
+          <span class="tag">OAuth 2.0</span>
+          <span class="tag">Chart.js</span>
+          <span class="tag">Docker</span>
         </div>
-        <h2 class="project-title">NYC Taxi Fare Prediction:<br/>Data Integrity & Feature Engineering</h2>
+        <h2 class="project-title">Automated SEO<br/>Analytics Pipeline</h2>
         <p class="project-desc">
-          A comprehensive data analysis project focused on building a reliable predictive model for New York City taxi fares. The project prioritized data quality and meaningful feature creation — skills directly transferable to marketing analytics and campaign optimization.
+          An end-to-end data pipeline that automatically extracts search performance data from the Google Search Console API, transforms it with Pandas, and stores it in a SQLite database for long-term historical analysis — with a terminal SQL report view and a local browser dashboard. Unlike the native GSC dashboard, this pipeline retains data indefinitely and enables custom SQL-based analysis with no manual exports required.
         </p>
         <div class="project-highlights">
-          <div class="highlight-item">Filtered 0.847% of anomalous records to ensure data integrity, critical for maintaining accuracy in any data-driven spend analysis.</div>
-          <div class="highlight-item">Engineered key predictors including <code style="color:var(--gold-light); background:rgba(200,168,75,0.1); padding:0 4px;">trip_duration</code> and <code style="color:var(--gold-light); background:rgba(200,168,75,0.1); padding:0 4px;">avg_speed</code> — skills directly transferable to creating custom marketing metrics such as conversion rate and cost per acquisition.</div>
-          <div class="highlight-item">Performed EDA and confirmed high correlation (0.93) among non-financial predictors; recommended log transformation to maximize model performance.</div>
+          <div class="highlight-item">Built a full ETL pipeline across 6 modular Python scripts (<code>auth.py</code>, <code>extract.py</code>, <code>transform.py</code>, <code>load.py</code>, <code>query.py</code>, <code>dashboard.py</code>) orchestrated via a single <code>main.py</code> entry point.</div>
+          <div class="highlight-item">Solved Google Search Console's 16-month data retention limit by persisting all search query and page performance data to a local SQLite database that grows indefinitely over time.</div>
+          <div class="highlight-item">Engineered a custom <code>ctr_percent</code> metric and generated both a terminal SQL report and an interactive Chart.js browser dashboard for visual analysis.</div>
+          <div class="highlight-item">Containerized the full pipeline with Docker for portable, reproducible deployment across environments.</div>
         </div>
         <div class="project-footer">
-          <span class="project-date">June 2025</span>
-          <a href="https://github.com/HPSgh" target="_blank" class="project-link">View on GitHub →</a>
+          <span class="project-date">April 28, 2026</span>
+          <a href="https://github.com/HPSgh/seo-pipeline" target="_blank" class="project-link">View on GitHub →</a>
         </div>
       </div>
 
-      <!-- Project 2 -->
+      <!-- Project 02: Automatidata -->
       <div class="project-card">
         <div class="project-num">02</div>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Pandas</span>
+          <span class="tag">NumPy</span>
+          <span class="tag">Matplotlib</span>
+          <span class="tag">Seaborn</span>
+          <span class="tag">EDA</span>
+          <span class="tag">Feature Engineering</span>
+        </div>
+        <h2 class="project-title">NYC Taxi Fare Prediction:<br/>Data Integrity & Feature Engineering</h2>
+        <p class="project-desc">
+          A data preparation and integrity project for the NYC Taxi and Limousine Commission (TLC), completed as the Google Advanced Data Analytics Professional Certificate Python capstone. The goal was to deliver a clean, engineered, and validated dataset for predictive fare modeling — following a production-grade PACE strategy (Plan, Analyze, Construct, Execute).
+        </p>
+        <div class="project-highlights">
+          <div class="highlight-item">Loaded and assessed 22,699 rows × 17 columns of 2017 NYC Yellow Cab trip data, correcting datetime dtypes and identifying impossible negative/zero values across financial and distance columns.</div>
+          <div class="highlight-item">Engineered two high-value predictors — <code>trip_duration_minutes</code> and <code>avg_speed_mph</code> — and applied domain-knowledge speed filtering (max 60 mph) to remove erroneous entries.</div>
+          <div class="highlight-item">Removed 192 rows (0.847% of data) through systematic outlier filtering, producing a final clean dataset of 22,474 rows × 20 columns ready for regression modeling.</div>
+          <div class="highlight-item">Correlation analysis confirmed <code>trip_distance</code> (0.94) and <code>fare_amount</code> (0.98) as strongest predictors; log transformation recommended for highly skewed target variable <code>total_amount</code>.</div>
+        </div>
+        <div class="project-footer">
+          <span class="project-date">October 30, 2025</span>
+          <a href="https://github.com/HPSgh/Automatidata-Data-Integrity-Project" target="_blank" class="project-link">View on GitHub →</a>
+        </div>
+      </div>
+
+      <!-- Project 03: BellaBeat -->
+      <div class="project-card">
+        <div class="project-num">03</div>
         <div class="project-tags">
           <span class="tag">R</span>
           <span class="tag">Tidyverse</span>
@@ -269,32 +137,17 @@
         </div>
         <h2 class="project-title">BellaBeat Fitness<br/>Data Analysis</h2>
         <p class="project-desc">
-          A stakeholder-focused analysis of smart fitness device user behavior for BellaBeat, a wellness technology company. The project demonstrated end-to-end analytical workflow — from raw data validation through to visual storytelling for business decision-making.
+          A stakeholder-focused analysis of smart fitness device user behavior using FitBit Fitness Tracker data from Kaggle (30 users, 1,397 records). The goal was to identify usage trends and translate them into product and marketing recommendations for BellaBeat — a women's wellness technology company.
         </p>
         <div class="project-highlights">
-          <div class="highlight-item">Cleaned and validated large, raw user datasets to ensure high data quality for digital campaign performance analysis.</div>
-          <div class="highlight-item">Applied EDA and ggplot2 visualization to translate complex user behavior correlations into clear, actionable reports for non-technical stakeholders.</div>
-          <div class="highlight-item">Identified key user engagement trends through statistical analysis, directly informing strategic product and marketing decisions.</div>
+          <div class="highlight-item">Merged two daily activity datasets, corrected date formats, removed duplicates, and confirmed zero null values — delivering a clean dataset ready for analysis.</div>
+          <div class="highlight-item">Discovered users spent an average of 993 min/day sedentary and only 19.7 min/day very active, revealing a major engagement gap for BellaBeat's product team to address.</div>
+          <div class="highlight-item">Built ggplot2 visualizations confirming strong positive correlations between total steps/distance and calories burned — directly informing feature design recommendations.</div>
+          <div class="highlight-item">Recommended BellaBeat leverage its Leaf and Time devices for daily step goal reminders and gamified challenges targeted at sedentary users.</div>
         </div>
         <div class="project-footer">
-          <span class="project-date">June 2025</span>
-          <a href="https://github.com/HPSgh" target="_blank" class="project-link">View on GitHub →</a>
-        </div>
-      </div>
-
-      <!-- Coming soon -->
-      <div class="project-card coming-soon visible">
-        <div class="project-num">03</div>
-        <div class="project-tags">
-          <span class="tag">SQL</span>
-          <span class="tag">Python</span>
-          <span class="tag">Power BI</span>
-        </div>
-        <h2 class="project-title">More projects coming soon</h2>
-        <p class="project-desc">Currently building new analytics and BI projects. Check back or follow on GitHub for updates.</p>
-        <div class="project-footer">
-          <span class="project-date">In Progress · 2026</span>
-          <a href="https://github.com/HPSgh" target="_blank" class="project-link">Follow on GitHub →</a>
+          <span class="project-date">June 12, 2025</span>
+          <a href="https://github.com/HPSgh/BellaBeat_Analysis" target="_blank" class="project-link">View on GitHub →</a>
         </div>
       </div>
 
@@ -303,20 +156,15 @@
 
   <footer>
     <span>© 2026 Htoo Pyae Shan</span>
-    <a href="index.html" style="color:var(--gold); text-decoration:none; font-size:0.8rem;">← Back to Home</a>
+    <a href="index.html" style="color:var(--gold);text-decoration:none;font-size:0.8rem;">← Back to Home</a>
   </footer>
 
   <script>
-    const cards = document.querySelectorAll('.project-card:not(.coming-soon)');
+    const cards = document.querySelectorAll('.project-card');
     const obs = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('visible'), i * 150);
-        }
-      });
+      entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 150); });
     }, { threshold: 0.08 });
     cards.forEach(c => obs.observe(c));
   </script>
-
 </body>
 </html>

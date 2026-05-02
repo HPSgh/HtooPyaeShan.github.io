@@ -25,6 +25,12 @@ Personal portfolio website built with HTML & CSS, hosted on GitHub Pages. Showca
 - Outputs: terminal SQL reports + interactive Chart.js browser dashboard
 - Containerized with Docker for portable deployment
 
+### 02 · Telegram OCR Expense Tracker
+- **Tools:** Google Apps Script, Telegram Bot API, Google Drive OCR, Google Sheets, PropertiesService
+- Built a 3-layer automation system: Telegram Bot → Apps Script OCR engine → relational Google Sheets database
+- Handles Thai Buddhist Era dates, auto bank detection (KBank/Bangkok Bank), split transaction parsing
+- Server-side session store bypasses Telegram's 64-byte callback limit for complex multi-step flows
+
 ### 02 · NYC Taxi Fare Prediction — Data Integrity & Feature Engineering
 - **Tools:** Python, Pandas, NumPy, Matplotlib, Seaborn
 - Loaded and assessed 22,699 rows of 2017 NYC Yellow Cab data
@@ -68,3 +74,5 @@ Final-year Software Engineering student at Mae Fah Luang University (GPAX 3.76) 
 - 💻 [github.com/HPSgh](https://github.com/HPSgh)
 
 ---
+
+*Part of the SEO Health & Performance Data Pipeline project.*

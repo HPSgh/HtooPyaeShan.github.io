@@ -151,6 +151,32 @@
         </div>
       </div>
 
+      <!-- Project 04: Expense Tracker -->
+      <div class="project-card">
+        <div class="project-num">04</div>
+        <div class="project-tags">
+          <span class="tag">Google Apps Script</span>
+          <span class="tag">Telegram Bot API</span>
+          <span class="tag">Google Drive OCR</span>
+          <span class="tag">Google Sheets</span>
+          <span class="tag">PropertiesService</span>
+        </div>
+        <h2 class="project-title">Telegram OCR<br/>Expense Tracker</h2>
+        <p class="project-desc">
+          A personal finance automation system built around a real daily problem — manually logging Thai bank payment slips is tedious and error-prone. The solution: a Telegram bot that reads slip photos via OCR, extracts transaction data, and logs structured records into a relational Google Sheets database — entirely through a conversational interface.
+        </p>
+        <div class="project-highlights">
+          <div class="highlight-item">Built a full three-layer system: Telegram Bot (UI) → Google Apps Script (OCR + logic engine) → Google Sheets (relational database with Pivot Tables, SUMIFS, and Net Flow analytics across multiple tabs).</div>
+          <div class="highlight-item">Implemented smart OCR parsing that handles both English short-year format (<code style="color:var(--gold-light);background:rgba(200,168,75,0.1);padding:0 4px;">23 Feb 26</code>) and Thai Buddhist Era dates (<code style="color:var(--gold-light);background:rgba(200,168,75,0.1);padding:0 4px;">26 ก.พ. 68</code>), plus automatic bank detection (KBank, Bangkok Bank).</div>
+          <div class="highlight-item">Engineered a server-side session store using PropertiesService to bypass Telegram's 64-byte callback_data limit — enabling multi-step flows including split transaction detection, category selection, and description confirmation.</div>
+          <div class="highlight-item">Supports automatic split transaction parsing — a memo like <code style="color:var(--gold-light);background:rgba(200,168,75,0.1);padding:0 4px;">50 dinner/50 grocery</code> is auto-detected, validated against slip total, and saved as separate categorized rows.</div>
+        </div>
+        <div class="project-footer">
+          <span class="project-date">April 2026</span>
+          <a href="https://github.com/HPSgh/Telegram-expense-checker" target="_blank" class="project-link">View on GitHub →</a>
+        </div>
+      </div>
+
     </div>
   </section>
 

@@ -18,27 +18,35 @@ Personal portfolio website built with HTML & CSS, hosted on GitHub Pages. Showca
 
 ## Projects Featured
 
-### 01 · Automated SEO Analytics Pipeline
+### 01 · Thailand Tourism Recovery Dashboard (Power BI)
+- **Tools:** Power BI, DAX, Power Query, star schema, data.go.th, World Bank API
+- 4-page interactive dashboard analyzing Thailand's international tourism recovery, 2015–2023
+- Designed a star schema with a custom `DimDate` calendar table and DAX time intelligence (`SAMEPERIODLASTYEAR`, `CALCULATE`, `FILTER`/`ALL`)
+- Built 9 DAX measures identifying China's post-COVID recovery gap as Thailand's largest unrealized tourism opportunity
+- Pages: Executive Overview, Market Analysis (drillthrough), Seasonality & Composition, Recovery Opportunity
+- Published via GitHub (README, walkthrough GIF, PDF export, `.pbix` file) after documenting a Power BI Service publishing constraint
+
+### 02 · Automated SEO Analytics Pipeline
 - **Tools:** Python 3.13, Pandas, SQLite, Google Search Console API, OAuth 2.0, Chart.js, Docker
 - Built a full ETL pipeline (extract → transform → load) across 6 modular scripts
 - Solves Google Search Console's 16-month data retention limit via indefinite local SQLite storage
 - Outputs: terminal SQL reports + interactive Chart.js browser dashboard
 - Containerized with Docker for portable deployment
 
-### 02 · Telegram OCR Expense Tracker
+### 03 · Telegram OCR Expense Tracker
 - **Tools:** Google Apps Script, Telegram Bot API, Google Drive OCR, Google Sheets, PropertiesService
 - Built a 3-layer automation system: Telegram Bot → Apps Script OCR engine → relational Google Sheets database
 - Handles Thai Buddhist Era dates, auto bank detection (KBank/Bangkok Bank), split transaction parsing
 - Server-side session store bypasses Telegram's 64-byte callback limit for complex multi-step flows
 
-### 02 · NYC Taxi Fare Prediction — Data Integrity & Feature Engineering
+### 04 · NYC Taxi Fare Prediction — Data Integrity & Feature Engineering
 - **Tools:** Python, Pandas, NumPy, Matplotlib, Seaborn
 - Loaded and assessed 22,699 rows of 2017 NYC Yellow Cab data
 - Engineered `trip_duration_minutes` and `avg_speed_mph` features
 - Removed 192 anomalous rows (0.847%); delivered 22,474-row clean dataset
 - Confirmed `trip_distance` (0.94) correlation with `total_amount`; recommended log transformation
 
-### 03 · BellaBeat Fitness Data Analysis
+### 05 · BellaBeat Fitness Data Analysis
 - **Tools:** R, Tidyverse, ggplot2
 - Analyzed FitBit Fitness Tracker data (30 users, 1,397 records)
 - Found users averaged 993 min/day sedentary vs 19.7 min/day very active
@@ -58,7 +66,7 @@ Personal portfolio website built with HTML & CSS, hosted on GitHub Pages. Showca
 
 ## About Me
 
-Final-year Software Engineering student at Mae Fah Luang University (GPAX 3.76) and Google-certified Data Analyst. Recently completed a Digital Marketing Internship at BKK French Touch, Bangkok (Jan–Apr 2026).
+Software Engineering graduate of Mae Fah Luang University (GPAX 3.76) and Google-certified Data Analyst. Recently completed a Digital Marketing Internship at BKK French Touch, Bangkok (Jan–Apr 2026).
 
 - 🎯 Near-term goal: Junior Data Analyst role in Bangkok
 - 🚀 Long-term goal: Data Engineer
